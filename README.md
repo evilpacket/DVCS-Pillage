@@ -36,6 +36,7 @@ Chances are you are getting hit with a redirect. If you are trying to pillage ex
 
 ## Contributors ##
 [Michael Garvin](http://github.com/wraithgar)
+[Koto](https://github.com/koto)
 
 ## License ##
 
