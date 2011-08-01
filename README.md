@@ -24,7 +24,8 @@ Example:
 
 
 ## hgpillage requirements ## 
-    `pip install -r pip-requirements.tx`
+
+    `pip install -r pip-requirements.txt`
 
 
 ## Contributors ##
