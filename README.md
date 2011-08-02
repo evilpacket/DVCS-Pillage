@@ -12,7 +12,7 @@ Basic requirements usually fulfilled by any *nix system.
 * awk
 
 
-## Usage ##
+## gitpillage.sh Usage ##
     gitpillage.sh hostname/directory
     (directory is optional)
 
@@ -23,19 +23,14 @@ Example:
     `gitpillage.sh www.example.com (would crawl http://example.com/.git/)`
 
 
-## WTF does this mean ##
+## hgpillage requirements ## 
 
-``
-cat: Moved: No such file or directory
-cat: Permanently</h1>: No such file or directory
-cat: document: No such file or directory
-cat: (Unix): No such file or directory
-``
+    `pip install -r pip-requirements.txt`
 
-Chances are you are getting hit with a redirect. If you are trying to pillage example.com try www.example.com instead.
 
 ## Contributors ##
 [Michael Garvin](http://github.com/wraithgar)
+[Koto](https://github.com/koto)
 
 ## License ##
 
