@@ -82,6 +82,7 @@ getsha `cat .git/$ref`
 
 #5 - get index
 get "index"
+get ".gitignore"
 
 if [ "$2" != "" ]; then
    echo "Getting single file: $2"
