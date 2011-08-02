@@ -117,6 +117,7 @@ do
 done
 
 #8 - try and checkout files. It's not perfect, but you might get lucky
+echo "Trying to checkout files"
 for line in `git ls-files`
 do
     git checkout $line
