@@ -26,6 +26,7 @@ STATIC_FILES = [
     '.hg/store/00manifest.d',
     '.hg/store/fncache',
     '.hg/store/undo',
+    '.hg/.hgignore',
 ]
 
 parser = argparse.ArgumentParser(description='Pillage a mercurial (HG) repository.')
