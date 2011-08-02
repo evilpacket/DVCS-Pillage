@@ -125,7 +125,7 @@ done
 
 #9 - Reporting
 echo -e "\n\n#### Potentially Interesting Files #### \n\n"
-for file in `git ls-files|grep -i -f ../pillage.regex`
+for file in `git ls-files|grep -i -f ../pillage.regex|grep -E -v "\.(gif|png|jpg|css|js|html)$"`
 do
     echo -n $file
     if [ -e $file ]; then
