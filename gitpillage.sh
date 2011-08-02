@@ -122,3 +122,13 @@ for line in `git ls-files`
 do
     git checkout $line
 done
+
+#9 - Reporting
+echo -e "\n\n#### Potentially Interesting Files #### \n\n"
+for file in `git ls-files|grep -i -f ../pillage.regex`
+do
+    echo -n $file
+    if [ -e $file ]; then
+        echo " - [CHECKED OUT]"
+    fi
+done
