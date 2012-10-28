@@ -102,13 +102,14 @@ do
     getsha $line
 done
 
-#7 - try and get more objects based on log references
+#7 - use git fsck trick from github.com/kost to get the final missing references
+# I don't have time to test but I think this could completely replace the ls-files above as well
 file="asdf"
 prev=""
 while [ "$file" != "" ]
 do
     prev=$file
-    file=`git log 2>&1 |grep "^error:"|awk '{print $5}'`
+    file=`git fsck 2>&1 |grep "^missing"|awk '{print $3}'`
     if [ "$file" == "$prev" ]
     then
         break
