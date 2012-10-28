@@ -1,28 +1,28 @@
 #!/bin/bash
 
-if [[ -z $1 ]]; then
+if [[ -z $2 ]]; then
     cat<<EOF
 Usage:
-    $0 hostname/directory
+    $0 protocol hostname/directory
     (directory is optional)
 Example:
-    $0 www.example.com/images (would crawl http://example.com/images/.git/)
-    $0 www.example.com (would crawl http://example.com/.git/)
+    $0 http www.example.com/images (would crawl http://example.com/images/.git/)
+    $0 https www.example.com (would crawl https://example.com/.git/)
 EOF
 exit 1
 else
     #Parse out directories and build base url
-    if [[ $1 =~ "/" ]] ; then
-        HOST=${1%%/*}
-        DIR=${1#*/}
+    if [[ $2 =~ "/" ]] ; then
+        HOST=${2%%/*}
+        DIR=${2#*/}
     else
-        HOST=$1
+        HOST=$2
         DIR=""
     fi
     if [[ -e $DIR ]]; then
-        BASEURL="http://${HOST}/.git/"
+        BASEURL="$1://${HOST}/.git/"
     else
-        BASEURL="http://${HOST}/${DIR}/.git/"
+        BASEURL="$1://${HOST}/${DIR}/.git/"
     fi
 fi
 
