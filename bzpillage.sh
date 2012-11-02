@@ -83,7 +83,7 @@ file="asdf"
 while [ "$file" != "" ]
 do
     cd $HOST
-    file=`bzr check 2>&1|grep ERROR|head -1|awk '{print $6}'|sed "s/.*\(\.bzr\/.*\)\':$/\1/"`
+    file=`bzr check 2>&1|grep ERROR|head -1|awk '{print $6}'|sed "s/.*\(\.bzr\/.*\)':$/\1/"`
     if [ "$file" != "" ]; then
         echo "Getting $file"
         get $file
