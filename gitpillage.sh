@@ -49,7 +49,7 @@ export IFS=$OFS
 function get {
     if [ ! -e .git/$1 ]; then
       echo "Getting $1"
-      if [ '$CRAWLER' == 'wget' ]; then
+      if [ "$CRAWLER" == 'wget' ]; then
           wget $BASEURL$1 -x -nH --cut-dirs=$DIR_COUNT
       else
           curl $BASEURL$1 -s -f -S --create-dirs -o .git/$1
