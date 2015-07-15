@@ -3,8 +3,8 @@
 if [[ -z $2 ]]; then
     cat<<EOF
 Usage:
-    $0 protocol hostname/directory
-    (directory is optional)
+    $0 protocol hostname/directory single_file
+    (directory and single_file are optional)
 Example:
     $0 http www.example.com/images (would crawl http://example.com/images/.git/)
     $0 https www.example.com (would crawl https://example.com/.git/)
@@ -19,7 +19,7 @@ else
         HOST=$2
         DIR=""
     fi
-    if [[ -e $DIR ]]; then
+    if [[ -z $DIR ]]; then
         BASEURL="$1://${HOST}/.git/"
     else
         BASEURL="$1://${HOST}/${DIR}/.git/"
@@ -84,11 +84,11 @@ getsha `cat .git/$ref`
 get "index"
 get ".gitignore"
 
-if [ "$2" != "" ]; then
-   echo "Getting single file: $2"
-   sha=`git ls-files --stage|grep $2|head -1|awk '{print $2}'`
+if [ "$3" != "" ]; then
+   echo "Getting single file: $3"
+   sha=`git ls-files --stage|grep $3|head -1|awk '{print $3}'`
    getsha $sha
-   git checkout $2
+   git checkout $3
    exit 0
 fi
 
@@ -118,10 +118,12 @@ do
 done
 
 #8 - try and checkout files. It's not perfect, but you might get lucky
+# Doing with the pipe as the original method split lines with
+# spaces in them into two lines. Don't know why but this version works
 echo "Trying to checkout files"
-for line in `git ls-files`
+git ls-files | while read line;
 do
-    git checkout $line
+    git checkout "$line"
 done
 
 #9 - Reporting
