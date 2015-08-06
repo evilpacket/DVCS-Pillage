@@ -50,9 +50,9 @@ function get {
     if [ ! -e .git/$1 ]; then
       echo "Getting $1"
       if [ "$CRAWLER" == 'wget' ]; then
-          wget $BASEURL$1 -x -nH --cut-dirs=$DIR_COUNT
+          wget $BASEURL$1 -x -nH --cut-dirs=$DIR_COUNT --no-check-certificate
       else
-          curl $BASEURL$1 -s -f -S --create-dirs -o .git/$1
+          curl $BASEURL$1 -s -f -S --create-dirs -o .git/$1 --insecure
       fi
     fi
 }
